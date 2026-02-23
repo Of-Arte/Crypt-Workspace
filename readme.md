@@ -38,7 +38,6 @@ python crypt.py
 
 - [Architecture Guide & Data Flow](./docs/architecture.md) - Deep dive into mapping logic and execution paths.
 - [API Reference](./docs/api_reference.md) - Function-level specifications.
-- [ADR-0001: OTP Model Transition](./docs/adr/0001-workspace-and-rotating-keys.md) - Architecture Decision Record on rotating keys vs. repeating structures.
 - [Historical Branch](./legacy/README.md) - Original design specifications and prototyping artifacts.
 
 ---
