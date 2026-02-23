@@ -7,7 +7,7 @@
 
 ---
 
-## �️ System Architecture
+## System Architecture
 
 Crypt Workspace is designed as a persistent cryptographic engine that orchestrates Vigenère-based One-Time Pad (OTP) encryption. The architecture is built around three core components:
 
@@ -19,7 +19,7 @@ The system natively supports linguistic versatility without stripping context, m
 
 ---
 
-## 🚀 Operational Workflow
+## Operational Workflow
 
 ```bash
 # Initialize the workspace environment
@@ -34,15 +34,13 @@ python crypt.py
 
 ---
 
-## 📂 Technical Documentation
+## Technical Documentation
 
 - [Architecture Guide & Data Flow](./docs/architecture.md) - Deep dive into mapping logic and execution paths.
 - [API Reference](./docs/api_reference.md) - Function-level specifications.
-- [Historical Branch](./legacy/README.md) - Original design specifications and prototyping artifacts.
-
 ---
 
-## 🏛️ Execution Pipeline
+## Execution Pipeline
 
 ```mermaid
 graph TD
