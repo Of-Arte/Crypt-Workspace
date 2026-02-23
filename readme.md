@@ -35,7 +35,7 @@ python crypt.py
 ---
 
 ## Technical Documentation
-
+- [User Guide](./docs/user_guide.md) - How to use the CLI and manage vaults.
 - [Architecture Guide & Data Flow](./docs/architecture.md) - Deep dive into mapping logic and execution paths.
 - [API Reference](./docs/api_reference.md) - Function-level specifications.
 ---
