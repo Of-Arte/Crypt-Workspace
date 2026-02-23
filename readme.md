@@ -1,86 +1,62 @@
-# Crypt Workspace (Artè Cipher) 🔐
+# Crypt Workspace v1.0 🔐
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Python Version](https://img.shields.io/badge/python-3.x-blue.svg)](https://python.org)
 
-**A secure, command-line workspace for symmetric encryption, built as a capstone project for my dev portfolio.**
-
----
-
-## 🌟 The Spark
-
-This project was born from a conversation. It started with a simple curiosity about how the **Vigenère cipher** hides text and quickly evolved into a deep dive into algorithmic thinking, data structures, and real world security.
-
-What began as "building a 26x26 table in Python" became a lesson in the fragility of repeating keys and the power of rotating randomness. From pseudocode and ASCII flowcharts to a robust, menu driven workspace system.
-
-You can read the original [Developer Diary on my learning journey here](./legacy/README.md), which documents my design-first approach, early mistakes, and first-year "lightbulb" moments.
+**A secure, command-line orchestration engine for stateful symmetric encryption.**
 
 ---
 
-## 🎓 What I Built & Learned
+## �️ System Architecture
 
-Through building this capstone project, I mastered several core engineering and cryptographic concepts:
+Crypt Workspace is designed as a persistent cryptographic engine that orchestrates Vigenère-based One-Time Pad (OTP) encryption. The architecture is built around three core components:
 
-- **Algorithmic Design**: Designing solutions using step-by-step pseudocode and ASCII flowcharts before writing a single line of Python.
-- **Data Structures**: Using **Stacks (Lists)** to rotate the alphabet and build the cipher table row by row, and **Queues** to rotate through multiple keys.
-- **Character Encoding**: Mastering `ord()` and `chr()` to bridge the gap between human letters and computer-readable Unicode spots (A=0, Z=25).
-- **Cryptanalysis**: Learning why simple Vigenère repeats are vulnerable to frequency analysis and Kasiski examination.
-- **Secure Architecture**: Implementing a "One-Time Pad" approach where keys are as long as the content, random, and never reused.
-- **User Experience (UX)**: Building a menu-driven CLI that maintains project state (Vaults) and preserves natural text elements like casing and punctuation.
+1. **OTP Engine**: Generates unique, non-repeating keys scaled dynamically to chunk lengths.
+2. **Vault Storage (State Management)**: A JSON-backed persistence layer that records discrete encryption operational states ("Secret Ops"). 
+3. **Bi-Directional Tracing**: Enables cryptographic auditing by tracking exact key-shift mappings applied to character vectors.
 
----
-
-## ✨ Features
-
-- **OTP Engine**: Generates unique, random, and padded keys for every word chunk.
-- **Workspace (Vault) System**: Persistent storage of "Secret Ops" in JSON format, tracking full history and mapping.
-- **Linguistic Versatility**: Support for Latin (A-Z), Spanish (A-Z + Ñ), and French (A-Z + Accents) alphabets.
-- **Bi-Directional Tracing**: Audit exactly which key shift was applied to which character.
-- **Smart Formatting**: Maintains original spaces, punctuation, and casing through the encryption cycle.
+The system natively supports linguistic versatility without stripping context, maintaining exact casing and punctuation across Latin, Spanish, and French alphabets during transformation pipelines.
 
 ---
 
-## 🚀 Quick Start
+## 🚀 Operational Workflow
 
 ```bash
-# Start the Crypt Workshop
+# Initialize the workspace environment
 python crypt.py
 ```
 
-### Typical Workflow:
-1. **[1] Set Message**: Import from `msg.txt` or type your secret.
-2. **[4] Encrypt**: The engine generates random keys and encrypts your chunks.
-3. **[3] Save Project**: Persistent storage in the `vault/`.
-4. **[5] Decrypt**: Automatically uses the associated keys from the workspace history.
+### Standard Operating Procedure:
+1. **[1] Ingress**: Load plaintext via `msg.txt` or standard input.
+2. **[4] Encrypt**: The OTP engine generates cryptographically random key segments and executes the encryption matrix.
+3. **[3] Persist State**: Commit the ephemeral operation securely into the `vault/` persistent storage.
+4. **[5] Decrypt**: State engine automatically retrieves and applies the associated mapping history to reverse the operation.
 
 ---
 
-## 📂 Documentation
+## 📂 Technical Documentation
 
-- [Architecture Guide](./docs/architecture.md) - Deep dive into the engine and mapping logic.
-- [User Guide](./docs/user_guide.md) - How to use the CLI and manage vaults.
-- [API Reference](./docs/api_reference.md) - Function-level documentation for developers.
-- [Architecture Decisions](./docs/adr/0001-workspace-and-rotating-keys.md) - Why we moved to the OTP model.
+- [Architecture Guide & Data Flow](./docs/architecture.md) - Deep dive into mapping logic and execution paths.
+- [API Reference](./docs/api_reference.md) - Function-level specifications.
+- [ADR-0001: OTP Model Transition](./docs/adr/0001-workspace-and-rotating-keys.md) - Architecture Decision Record on rotating keys vs. repeating structures.
+- [Historical Branch](./legacy/README.md) - Original design specifications and prototyping artifacts.
 
 ---
 
-## 🏛️ Flow Overview
+## 🏛️ Execution Pipeline
 
-```text
-       Start [Input Sentence]
-             |
-      Split sentence into chunks (Words vs. Punctuation)
-             ↓
-    For each Word chunk:
-  ┌───────────────────────────────────┐
-  | Generate/Get Next Random Key      |
-  | Pad Key to match Word length      |
-  | Lookup Vigenère(Key_i, Word_i)    |
-  | Save Pair to Mapping History      |
-  └─────────────┬─────────────────────┘
-                |
-        Reassemble Chunks (Keeping Punctuation)
-                |
-       End [Encrypted Result]
+```mermaid
+graph TD
+    A[Start: Ingress Sentences] --> B{Chunking Engine}
+    B -->|Split Spaces & Punctuation| C(Process Work Chunks)
+    
+    C --> D[Generate OTP Key Segment]
+    D --> E[Pad Sequence]
+    E --> F[Vigenère Transform]
+    F --> G[Record to Mapping State]
+    
+    G --> H{Reassembly Pipeline}
+    H -->|Restore Punctuation Context| I[End: Ciphertext Delivery]
 ```
 
 ---
