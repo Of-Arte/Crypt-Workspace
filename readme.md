@@ -1,4 +1,8 @@
-# Artè Cipher 🔐
+# Crypt Workspace (Artè Cipher) 🔐
+
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
+**A secure, command-line workspace for symmetric encryption, built as a capstone project for my dev portfolio.**
 
 ---
 
@@ -8,11 +12,13 @@ This project was born from a conversation. It started with a simple curiosity ab
 
 What began as "building a 26x26 table in Python" became a lesson in the fragility of repeating keys and the power of rotating randomness. From pseudocode and ASCII flowcharts to a robust, menu driven workspace system.
 
+You can read the original [Developer Diary on my learning journey here](./legacy/README.md), which documents my design-first approach, early mistakes, and first-year "lightbulb" moments.
+
 ---
 
-## 🎓 I Learned...
+## 🎓 What I Built & Learned
 
-Through building this project, I mastered several core engineering and cryptographic concepts:
+Through building this capstone project, I mastered several core engineering and cryptographic concepts:
 
 - **Algorithmic Design**: Designing solutions using step-by-step pseudocode and ASCII flowcharts before writing a single line of Python.
 - **Data Structures**: Using **Stacks (Lists)** to rotate the alphabet and build the cipher table row by row, and **Queues** to rotate through multiple keys.
