@@ -6,9 +6,7 @@ import datetime
 from typing import List, Dict, Callable, NamedTuple, Optional, Any
 
 # Constants
-ALPHABET_LATIN = list(string.ascii_uppercase)
-ALPHABET_SPANISH = list(string.ascii_uppercase + "Ñ")
-ALPHABET_FRENCH = list(string.ascii_uppercase + "ÀÂÆÇÉÈÊËÎÏÔŒÙÛÜŸ")
+ALPHABET_STD = list(string.ascii_uppercase)
 
 # Command Pattern Structure
 class MenuAction(NamedTuple):
@@ -19,7 +17,7 @@ class MenuAction(NamedTuple):
 current_data = {
     "name": "Unnamed Project",
     "entries": [],
-    "alphabet": ALPHABET_LATIN, 
+    "alphabet": ALPHABET_STD, 
     "shift": 1
 }
 
@@ -260,60 +258,7 @@ def run_decryption():
         pause()
 
 # OPTIONS MENU FUNCTIONS
-def set_language():
-    while True:
-        clear_screen()
-        print_box([
-            "1. Latin (A-Z)",
-            "2. Spanish (A-Z + Ñ)",
-            "3. French (A-Z + Accents)",
-            "4. Custom",
-            "0. Back"
-        ], "SET LANGUAGE")
-        
-        current_str = "".join(current_data["alphabet"])
-        current_disp = current_str if len(current_str) < 40 else current_str[:37] + "..."
-        print(f"Current: {current_disp}")
-        
-        choice = input("\nSelect > ").strip()
-        
-        if choice == '1':
-            current_data["alphabet"] = ALPHABET_LATIN
-            print(">> Set to Latin.")
-            pause()
-            break
-        elif choice == '2':
-            current_data["alphabet"] = ALPHABET_SPANISH
-            print(">> Set to Spanish.")
-            pause()
-            break
-        elif choice == '3':
-            current_data["alphabet"] = ALPHABET_FRENCH
-            print(">> Set to French.")
-            pause()
-            break
-        elif choice == '4':
-            new_alpha = input("Enter new alphabet string (e.g. ABC): ").strip()
-            if not new_alpha:
-                print("!! Invalid input.")
-                pause()
-                continue
-            
-            # Duplicate check
-            if len(set(new_alpha)) != len(new_alpha):
-                print("!! Error: Alphabet contains duplicate characters.")
-                pause()
-                continue
-                
-            current_data["alphabet"] = list(new_alpha)
-            print(">> Custom Alphabet updated.")
-            pause()
-            break
-        elif choice == '0':
-            break
-        else:
-            print("Invalid choice.")
-            pause()
+
 
 def set_shift():
     print("\n[ SET SHIFT ]")
@@ -329,31 +274,26 @@ def set_shift():
     input("[Press Enter]")
 
 def reset_defaults():
-    current_data["alphabet"] = ALPHABET_LATIN
+    current_data["alphabet"] = ALPHABET_STD
     current_data["shift"] = 1
-    print(">> Defaults restored (Latin, Shift 1).")
+    print(">> Defaults restored (Shift 1).")
     input("[Press Enter]")
 
 def menu_options():
     while True:
         clear_screen()
         lines = [
-            "1. Set Language / Alphabet",
-            "2. Set Table Shift",
-            "3. Reset to Defaults",
+            "1. Set Table Shift",
+            "2. Reset to Defaults",
             "0. Back"
         ]
         print_box(lines, "SETTINGS")
         # Show Current Settings
-        alpha_str = "".join(current_data["alphabet"])
-        alpha_disp = alpha_str if len(alpha_str) < 20 else alpha_str[:17] + "..."
         print(f"  Shift: {current_data['shift']}")
-        print(f"  Alphabet: {alpha_disp}")
         
         choice = input("\nSelect > ").strip()
-        if choice == '1': set_language()
-        elif choice == '2': set_shift()
-        elif choice == '3': reset_defaults()
+        if choice == '1': set_shift()
+        elif choice == '2': reset_defaults()
         elif choice == '0': break
         else: 
             print("Invalid choice.")

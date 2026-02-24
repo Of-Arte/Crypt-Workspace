@@ -15,7 +15,7 @@ Crypt Workspace is designed as a persistent cryptographic engine that orchestrat
 2. **Vault Storage (State Management)**: A JSON-backed persistence layer that records discrete encryption operational states ("Secret Ops"). 
 3. **Bi-Directional Tracing**: Enables cryptographic auditing by tracking exact key-shift mappings applied to character vectors.
 
-The system natively supports linguistic versatility without stripping context, maintaining exact casing and punctuation across Latin, Spanish, and French alphabets during transformation pipelines.
+The system dynamically scales and handles any provided character alphabets without stripping context, maintaining exact phrasing and punctuation during transformation pipelines.
 
 ---
 
