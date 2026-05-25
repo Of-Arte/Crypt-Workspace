@@ -1,4 +1,4 @@
-# Crypt Workspace v1.0 🔐
+# Crypt Workspace v1.0
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Python Version](https://img.shields.io/badge/python-3.x-blue.svg)](https://python.org)
@@ -38,23 +38,6 @@ python crypt.py
 - [User Guide](./docs/user_guide.md) - How to use the CLI and manage vaults.
 - [Architecture Guide & Data Flow](./docs/architecture.md) - Deep dive into mapping logic and execution paths.
 - [API Reference](./docs/api_reference.md) - Function-level specifications.
----
-
-## Execution Pipeline
-
-```mermaid
-graph TD
-    A[Start: Ingress Sentences] --> B{Chunking Engine}
-    B -->|Split Spaces & Punctuation| C(Process Work Chunks)
-    
-    C --> D[Generate OTP Key Segment]
-    D --> E[Pad Sequence]
-    E --> F[Vigenère Transform]
-    F --> G[Record to Mapping State]
-    
-    G --> H{Reassembly Pipeline}
-    H -->|Restore Punctuation Context| I[End: Ciphertext Delivery]
-```
 
 ---
 
