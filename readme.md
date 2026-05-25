@@ -3,12 +3,6 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Python Version](https://img.shields.io/badge/python-3.x-blue.svg)](https://python.org)
 
-**A secure, command-line orchestration engine for stateful symmetric encryption.**
-
----
-
-## System Architecture
-
 Crypt Workspace is designed as a persistent cryptographic engine that orchestrates Vigenère-based One-Time Pad (OTP) encryption. The architecture is built around three core components:
 
 1. **OTP Engine**: Generates unique, non-repeating keys scaled dynamically to chunk lengths.
