@@ -6,7 +6,7 @@
 Crypt Workspace is designed as a persistent cryptographic engine that orchestrates Vigenère-based One-Time Pad (OTP) encryption. The architecture is built around three core components:
 
 1. **OTP Engine**: Generates unique, non-repeating keys scaled dynamically to chunk lengths.
-2. **Vault Storage (State Management)**: A JSON-backed persistence layer that records discrete encryption operational states ("Secret Ops (Alphabet: A-Z)"). 
+2. **Vault Storage (State Management)**: A JSON-backed persistence layer that records discrete encryption operational states ("Secret Ops (Alphabet: A-Z, Shift: 2)"). 
 3. **Bi-Directional Tracing**: Enables cryptographic auditing by tracking exact key-shift mappings applied to character vectors.
 
 The system dynamically scales and handles any provided character alphabets without stripping context, maintaining exact phrasing and punctuation during transformation pipelines.
