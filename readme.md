@@ -21,10 +21,10 @@ python crypt.py
 ```
 
 ### Standard Operating Procedure:
-1. **[1] Ingress**: Load plaintext via `msg.txt` or standard input.
-2. **[4] Encrypt**: The OTP engine generates cryptographically random key segments and executes the encryption matrix.
-3. **[3] Persist State**: Commit the ephemeral operation securely into the `vault/` persistent storage.
-4. **[5] Decrypt**: State engine automatically retrieves and applies the associated mapping history to reverse the operation.
+1. ** Ingress**: Load plaintext via `msg.txt` or standard input.
+2. ** Encrypt**: The OTP engine generates cryptographically random key segments and executes the encryption matrix.
+3. ** Persist State**: Commit the operation state securely into the `vault/` persistent storage.
+4. ** Decrypt**: State engine automatically retrieves and applies the associated mapping history to reverse the operation.
 
 ---
 
